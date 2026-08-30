@@ -12,3 +12,4 @@ It currently supports:
 ```bash
 npm install
 npm test
+```
