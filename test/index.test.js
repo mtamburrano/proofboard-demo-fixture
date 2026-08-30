@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { createTodo, getOpenTodos } from "../dist/index.js";
+import { completeTodo, createTodo, getOpenTodos } from "../dist/index.js";
 
 test("createTodo creates an open todo", () => {
   assert.deepEqual(createTodo(1, "Ship the demo"), {
@@ -14,7 +14,7 @@ test("createTodo creates an open todo", () => {
 test("getOpenTodos returns only incomplete todos", () => {
   const todos = [
     createTodo(1, "Write tests"),
-    { ...createTodo(2, "Record demo"), completed: true },
+    completeTodo(createTodo(2, "Record demo")),
     createTodo(3, "Submit project"),
   ];
 
@@ -22,4 +22,15 @@ test("getOpenTodos returns only incomplete todos", () => {
     getOpenTodos(todos).map((todo) => todo.id),
     [1, 3],
   );
+});
+
+test("completeTodo marks a todo as completed", () => {
+  const todo = createTodo(4, "Close the ticket");
+
+  assert.deepEqual(completeTodo(todo), {
+    id: 4,
+    title: "Close the ticket",
+    completed: true,
+  });
+  assert.equal(todo.completed, false);
 });
