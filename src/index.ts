@@ -15,3 +15,10 @@ export function createTodo(id: number, title: string): Todo {
 export function getOpenTodos(todos: readonly Todo[]): Todo[] {
   return todos.filter((todo) => !todo.completed);
 }
+
+export function completeTodo(todo: Todo): Todo {
+  return {
+    ...todo,
+    completed: true,
+  };
+}
