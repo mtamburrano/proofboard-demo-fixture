@@ -1,11 +1,17 @@
-export const productName = "TrueForge Proof Board" as const;
+export interface Todo {
+  id: number;
+  title: string;
+  completed: boolean;
+}
 
-export const productThesis = "Verified autonomous software delivery" as const;
+export function createTodo(id: number, title: string): Todo {
+  return {
+    id,
+    title,
+    completed: false,
+  };
+}
 
-export const deliveryStages = ["Plan", "Execute", "Prove", "Approve"] as const;
-
-export type DeliveryStage = (typeof deliveryStages)[number];
-
-export function getProductSummary(): string {
-  return `${productName}: ${productThesis} — ${deliveryStages.join(" → ")}`;
+export function getOpenTodos(todos: readonly Todo[]): Todo[] {
+  return todos.filter((todo) => !todo.completed);
 }

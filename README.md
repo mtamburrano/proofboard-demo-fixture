@@ -1,29 +1,14 @@
-# TrueForge Proof Board
+# Tiny Todo Core
 
-TrueForge Agent Harness Hackathon submission for verified autonomous software delivery.
+A minimal TypeScript library for working with todos.
 
-TrueForge Proof Board is a small foundation for making autonomous software work understandable and trustworthy. The product thesis is:
+It currently supports:
 
-**Plan → Execute → Prove → Approve**
+- creating todos;
+- listing open todos.
 
-- **Plan** the objective and the bounded work needed to deliver it.
-- **Execute** through TrueForge with explicit ownership and controlled tools.
-- **Prove** progress with concrete, inspectable evidence rather than agent claims alone.
-- **Approve** consequential delivery actions with a human in control.
+## Setup
 
-This repository deliberately starts with only the TypeScript/Node foundation needed for the upcoming TrueForge integration. Mission, work-item, board, evidence, and approval behavior will be added incrementally as the end-to-end delivery path is built.
-
-## Development
-
-Requires Node.js 20 or newer.
-
-```sh
+```bash
 npm install
-npm run check
-```
-
-`npm run check` type-checks the source, builds it into `dist/`, and runs the Node test suite.
-
-## Repository safety
-
-Local credentials, environment files, MCP configuration, MCPlanner metadata, dependencies, and generated output are ignored by default. Do not commit secrets or machine-specific configuration.
+npm test
